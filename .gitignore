@@ -1,0 +1,10 @@
+.vs/
+
+News/News/bin/
+News/News/obj/
+
+News/News.Android/bin/
+News/News.Android/obj/
+
+News/News.iOS/bin/
+News/News.iOS/obj/
