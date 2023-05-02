@@ -23,7 +23,7 @@
                        FontFamily="{StaticResource IconFont}" 
                        Glyph='&#xf1ea;' Size="22" />
 
-            <FontImage x:Key="SettingIcon" 
+            <FontImage x:Key="SettingsIcon" 
                        FontFamily="{StaticResource IconFont}"
                        Glyph='&#xf013;' Size="22" Color="Black" />
 

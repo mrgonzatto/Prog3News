@@ -6,20 +6,24 @@
 
     <FlyoutItem Title="Home" 
                 Icon="{StaticResource HomeIcon}">
-        <ShellContent Title="Headlines">
+        <ShellContent Title="Headlines" 
+                      Icon="{StaticResource HeadlinesIcon}">
             <ContentPage Title="Headlines" />
         </ShellContent>
-        <Tab Title="News">
+        <Tab Title="News" 
+             Icon="{StaticResource NewsIcon}">
             <ContentPage Title="Local" />
             <ContentPage Title="Global" />
         </Tab>
     </FlyoutItem>
 
-    <FlyoutItem Title="Settings">
+    <FlyoutItem Title="Settings"
+                Icon="{StaticResource SettingsIcon}">
         <ContentPage Title="Settings" />
     </FlyoutItem>
 
-    <ShellContent Title="About" >
+    <ShellContent Title="About" 
+                  Icon="{StaticResource AboutIcon}">
         <ContentPage Title="About" />
     </ShellContent>
 
