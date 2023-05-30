@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace News.Models
 {
@@ -23,10 +22,9 @@ namespace News.Models
     }
 
     public class NewsResult
-    { 
+    {
         public string Status { get; set; }
         public int TotalResults { get; set; }
-        public List<Article> Articles { get;}
+        public List<Article> Articles { get; set; }
     }
-
 }

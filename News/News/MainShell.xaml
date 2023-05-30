@@ -1,30 +1,52 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
 <Shell xmlns="http://xamarin.com/schemas/2014/forms"
        xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-       xmlns:views="clr-namespace:News.Views"
-       x:Class="News.MainShell">
+       x:Class="News.MainShell"
+       xmlns:views="clr-namespace:News.Views">
 
-    <FlyoutItem Title="Home" 
-                Icon="{StaticResource HomeIcon}">
-        <ShellContent Title="Headlines" 
-                      Icon="{StaticResource HeadlinesIcon}">
-            <ContentPage Title="Headlines" />
-        </ShellContent>
-        <Tab Title="News" 
-             Icon="{StaticResource NewsIcon}">
-            <ContentPage Title="Local" />
-            <ContentPage Title="Global" />
+    <FlyoutItem Title="Home" Route="home" Icon="{StaticResource HomeIcon}">
+        <ShellContent ContentTemplate="{DataTemplate views:HeadlinesView}" Title="Headlines"
+                      Icon="{StaticResource HeadlinesIcon}" />
+
+        <Tab Title="News" Route="news" Icon="{StaticResource NewsIcon}">
+            <ShellContent Title="Local" Route="ducklocal" >
+                <ShellContent.ContentTemplate>
+                    <DataTemplate>
+                        <views:HeadlinesView>
+                            <x:Arguments>
+                                <x:String>Local</x:String>
+                            </x:Arguments>
+                        </views:HeadlinesView>
+                    </DataTemplate>
+                </ShellContent.ContentTemplate>
+            </ShellContent>
+
+            <ShellContent Title="Global"
+                          Route="duckglobal">
+
+                <ShellContent.ContentTemplate>
+                    <DataTemplate>
+                        <views:HeadlinesView>
+                            <x:Arguments>
+                                <x:String>Global</x:String>
+                            </x:Arguments>
+                        </views:HeadlinesView>
+                    </DataTemplate>
+                </ShellContent.ContentTemplate>
+
+            </ShellContent>
         </Tab>
+
     </FlyoutItem>
 
-    <FlyoutItem Title="Settings"
-                Icon="{StaticResource SettingsIcon}">
-        <ContentPage Title="Settings" />
+    <FlyoutItem Title="Settings" Icon="{StaticResource SettingsIcon}">
+        <ContentPage Title="Settings">
+            <StackLayout Margin="20">
+                <Label Text="Placeholder for settings" FontSize="Caption" />
+                <Label Text="Add controls here" FontSize="Body" />
+            </StackLayout>
+        </ContentPage>
     </FlyoutItem>
 
-    <ShellContent Title="About" 
-                  Icon="{StaticResource AboutIcon}">
-        <ContentPage Title="About" />
-    </ShellContent>
-
-</Shell>     
+    <ShellContent ContentTemplate="{DataTemplate views:AboutView}" Title="About" Icon="{StaticResource AboutIcon}" />
+</Shell>

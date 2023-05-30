@@ -1,33 +1,32 @@
-﻿using News.Models;
-using News.Services;
-using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System;
 using System.Threading.Tasks;
 using System.Web;
 using System.Windows.Input;
+using News.Models;
+using News.Services;
 using Xamarin.Forms;
 
 namespace News.ViewModels
 {
-    public class HeadLinesViewModel : ViewModel
+    public class HeadlinesViewModel : ViewModel
     {
         private readonly NewsService newsService;
+
         public NewsResult CurrentNews { get; set; }
 
-        public HeadLinesViewModel(NewsService newsService)
+        public HeadlinesViewModel(NewsService newsService)
         {
             this.newsService = newsService;
         }
 
         public async Task Initialize(string scope)
-        { 
+        {
             var resolvedScope = scope.ToLower() switch
-            { 
+            {
                 "local" => NewsScope.Local,
                 "global" => NewsScope.Global,
-                "headlines" => NewsScope.HeadLines,
-                _ => NewsScope.HeadLines
+                "headlines" => NewsScope.Headlines,
+                _ => NewsScope.Headlines
             };
 
             await Initialize(resolvedScope);
@@ -39,11 +38,11 @@ namespace News.ViewModels
         }
 
         public ICommand ItemSelected =>
-            new Command( async (selectedItem) => {
+            new Command(async (selectedItem) =>
+            {
                 var selectedArticle = selectedItem as Article;
                 var url = HttpUtility.UrlEncode(selectedArticle.Url);
-                //Mais implementações na próxima aula
-            } );
-
+                await Navigation.NavigateTo($"articleview?url={url}");
+            });
     }
 }
