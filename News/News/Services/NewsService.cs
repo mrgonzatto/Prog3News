@@ -13,9 +13,20 @@ namespace News.Services
             string url = GetUrl(scope);
 
             var webclient = new WebClient();
-            var json = await webclient.DownloadStringTaskAsync(url);
+            string ret = string.Empty;
 
-            return Newtonsoft.Json.JsonConvert.DeserializeObject<NewsResult>(json);
+            try
+            {
+                ret = await webclient.DownloadStringTaskAsync(url);                
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            return Newtonsoft.Json.JsonConvert.DeserializeObject<NewsResult>(ret);
+
+            //var json = await webclient.DownloadStringTaskAsync(url);
+            //return Newtonsoft.Json.JsonConvert.DeserializeObject<NewsResult>(json);
         }
 
         private string GetUrl(NewsScope scope)
